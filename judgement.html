@@ -21,7 +21,7 @@
             font-size:25px;
             font-family:"標楷體";
         }
-        h2 > select,  h2> input,  h2 > button{
+        h2 > select,  h2> input, button{
             border-radius: 5px;border: 2px solid #5a7bd0;
             text-align: center;font-family: "標楷體";
             letter-spacing: 0.05em;
@@ -39,19 +39,18 @@
 
     </style>
     <script type="text/javascript">
-
-        window.onload = function(){
-                var music = document.getElementById("music");//獲取ID  
-                setInterval("toggleSound()",100);
+        var music,play;
+        window.onload = function() {
+            music = document.getElementById("music");
+            play = document.getElementById("play");
+            // setInterval("function(){play().click();}",100);
+        };
+        function playMusic() {
+            music.play();
         }
-        //bgm nonstop
-        function toggleSound() {
-
-                    if (music.paused) { //判讀是否播放  
-                        music.paused=false;
-                        music.play(); //沒有就播放 
-                    }    
-            }
+        function pauseMusic() {
+            music.pause();
+        }   
 
         //calculate score
         function caculate(){
@@ -179,6 +178,7 @@
 </head>
 
 <body>
+    <audio autoplay loop id = "music" src="music/river.mp3" ></audio>
     <!-- Preloader Start -->
     <div id="preloader">
         <div class="preload-content">
@@ -260,6 +260,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
+                                <font color="white" face="Comic Sans Ms">BGM</font>
+                                <button id = "play" onclick="playMusic()">播放</button>
+                                <button id = "pause" onclick="pauseMusic()">暫停</button>
                                 <a href="https://linktr.ee/ncumt" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 <a href="https://www.instagram.com/ncumountaineeringclub/" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 <a href="https://www.facebook.com/ncumountaineeringclub" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -282,6 +285,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         
         <!-- Hero Content -->
         <div class="hero-content equalize">
+                
             <div class="container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center">
                     <div class="col-12 col-md-8">
