@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>中央大學登山社</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="img/core-img/favicon.png">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+        #judge > h2{
+            font-size:25px;
+            font-family:"標楷體";
+        }
+        h2 > select,  h2> input,  h2 > button{
+            border-radius: 5px;border: 2px solid #5a7bd0;
+            text-align: center;font-family: "標楷體";
+            letter-spacing: 0.05em;
+            
+        }
+        input[name = day]{
+          width: 50px;
+        } 
+
+        h2 > h3 > span{
+            color: red;
+            font-size: 40px;
+            font-family: "Brush Script MT", cursive;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function(){
+                var music = document.getElementById("music");//獲取ID  
+                setInterval("toggleSound()",100);
+        }
+        //bgm nonstop
+        function toggleSound() {
+
+                    if (music.paused) { //判讀是否播放  
+                        music.paused=false;
+                        music.play(); //沒有就播放 
+                    }    
+            }
+
+        //calculate score
+        function caculate(){
+            var name = document.getElementById("name");
+            var normal = document.getElementById("normal");
+            var abnormal = document.getElementById("abnormal");
+            var sum = document.getElementById("sum");
+            var level = document.getElementById("level");
+            var road = document.getElementById("road");
+            var terrain = document.getElementById("terrain");
+            var plant = document.getElementById("plant");
+            var energy = document.getElementById("energy");
+            var water = document.getElementById("water");
+            if(check(name.value,normal.value, abnormal.value, sum.value, level.value, road.value,terrain.value, plant.value, energy.value, water.value)){
+
+                var levelScore = Number(caculateLevel(level.value, road.value, terrain.value, plant.value));
+                var dayScore = Number(calculateDay(normal.value, abnormal.value));
+                var energyScore = Number(calculateEnergy(energy.value, water.value));
+                var score = levelScore + dayScore + energyScore;
+                var rank = calcuateRank(score);
+            
+                showcontent(levelScore, dayScore, energyScore, score, rank);
+            
+            }
+                
+            
+        }
+        function check(name, normal, abnormal, sum, level, road, terrain, plant, energy, water){
+            if(name == ""){
+                alert("請填寫路線名稱");
+                return false;
+            }
+            if(checkDay(normal, abnormal, sum, water)){ 
+                if(level == ""){
+                    alert("請選擇路況分級");
+                    return false;
+                }
+                if(road == ""){
+                    alert("請選擇路跡/指標");
+                    return false;
+                }
+                if(terrain == ""){
+                    alert("請選擇地形");
+                    return false;
+                }
+                if(plant == ""){
+                    alert("請選擇植被");
+                    return false;
+                }
+                if(energy == ""){
+                    alert("請選擇體力");
+                    return false;
+                }
+                return true;
+            }
+            
+        }
+        function checkDay(normal, abnormal, sum, water){
+
+            if(Number(normal) == 0 && Number(abnormal) == 0){
+                alert("天數不得為0，請修改一下:)");
+                return false;
+            }
+            if(Number(normal) + Number(abnormal) != sum) {
+                alert("總天數算錯了喔，請修改一下");
+                return false;
+            }
+            if(Number(water) > Number(sum)){
+                alert("背水天數不可能大於總天數喔，請你修改一下:)");
+                return false;
+            }
+            return true;
+            
+        }
+        function caculateLevel(level, road, terrain, plant){
+            var score = 0;
+            score = (Number(level) + Number(road) * 0.3 + Number(terrain) * 0.4 + Number(plant) * 0.3) * 1.5;
+            return score.toFixed(0);
+        }
+        function calculateDay(normal, abnormal){
+            var score = 0;
+            var abnormalScore = [0,10,17,24,31,38,45,52,59,66];
+
+            if(normal == 1)
+                score = 5;
+            else if(normal >= 2 && normal <= 3)
+                score = 10;
+            else if(normal >= 4 && normal <= 5)
+                score = 20;
+            else if(normal >= 6 && normal <= 8)
+                score = 30;
+            else if(normal >= 9)
+                score = 40;
+            score += abnormalScore[Number(abnormal)];
+            return score;
+        }
+        function calculateEnergy(energy,water){
+            var score = energy * 7 + water * 2;
+            return score;
+        }
+        function calcuateRank(score){
+            var rank = "";
+            if(score < 40)
+                rank = "D";
+            else if(score >= 40 && score < 60)
+                rank = "C";
+            else if(score >= 60 && score < 80)
+                rank = "B";
+            else if(score >= 80 && score < 100)
+                rank = "A";
+            else if(score >= 100 && score < 120)
+                rank = "S";
+            else if(score >= 120)
+                rank = "S+";
+            return rank;
+        }
+
+        function showcontent(levelScore, dayScore, energyScore, score, rank){
+            var msg = "<h3>路況：<span>" + levelScore.toFixed(1) + "</span> 天數：<span>" + dayScore.toFixed(1) + "</span>" + " 體力：<span>" + energyScore.toFixed(1) + " </span></h3>" + 
+                "<h3>分數為：<span>" + score.toFixed(1) + "</span></h3><h3>難度等級：<span>" + rank + "</span></h3>";
+            document.getElementById("Show").innerHTML = msg;
+        }
+   </script>
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="sonar-load"></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Grids -->
+    <div class="grids d-flex justify-content-between">
+        <div class="grid1"></div>
+        <div class="grid2"></div>
+        <div class="grid3"></div>
+        <div class="grid4"></div>
+        <div class="grid5"></div>
+        <div class="grid6"></div>
+        <div class="grid7"></div>
+        <div class="grid8"></div>
+        <div class="grid9"></div>
+    </div>
+
+    <!-- ***** Main Menu Area Start ***** -->
+    <div class="mainMenu d-flex align-items-center justify-content-between">
+        <!-- Close Icon -->
+        <div class="closeIcon">
+            <i class="ti-close" aria-hidden="true"></i>
+        </div>
+        <!-- Logo Area -->
+        <div class="logo-area">
+            <a href="index.html"><font face = "Comic Sans Ms" size = "20px" color = "white">NCUMT</font></a>
+        </div>
+        <!-- Nav -->
+        <div class="sonarNav wow fadeInUp" data-wow-delay="1s">
+            <nav>
+                <ul>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Home</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about-me.html"><font face = "Comic Sans Ms" size = "4px" color = "white">About me</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="judgement.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Judgement</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Portfolio</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Blog</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Contact</font></a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <!-- Copwrite Text -->
+        <div class="copywrite-text">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+        </div>
+    </div>
+    <!-- ***** Main Menu Area End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="menu-area d-flex justify-content-between">
+                        <!-- Logo Area  -->
+                        <div class="logo-area">
+                            <a href="index.html"><font face = "標楷體" size = "20px" color = "white">中央山社</font></a>
+                        </div>
+
+                        <div class="menu-content-area d-flex align-items-center">
+                            <!-- Header Social Area -->
+                            <div class="header-social-area d-flex align-items-center">
+                                <a href="https://linktr.ee/ncumt" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                <a href="https://www.instagram.com/ncumountaineeringclub/" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://www.facebook.com/ncumountaineeringclub" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </div>
+                            <!-- Menu Icon -->
+                            <span class="navbar-toggler-icon" id="menuIcon"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Hero Area Start ***** -->
+    <div class="hero-area d-flex align-items-center">
+       
+        <!-- Hero Thumbnail -->
+        <div class="hero-thumbnail equalize bg-img" style="background-image: url(img/bg-img/blog.jpg);"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content equalize">
+            <div class="container-fluid h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <div class="line"></div>
+                        <h2>隊伍難度評分系統</h2>
+                        <p>此評分系統根據路況、天數及所需體力來量化，並依據分數高低來訂定隊伍難度等級，請參考下列表格。</p>
+                        <a href="#judge" class="btn sonar-btn white-btn"><font size=" 5px">開始評分</font></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Hero Area End ***** -->
+
+    <!-- ***** Blog Area Start ***** -->
+    <section class="sonar-blog-area section-padding-100">
+        <!-- back end content -->
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-9">
+
+                    <!-- Single Blog Area -->
+                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a class="headline"><font face="標楷體" size="15px">隊伍難度分級表</font></a>
+                            <p>根據量化的分數高低訂定隊伍難度，難度由高至低分成S+到D。</p>
+                        </div>
+                        
+                        <!-- Post Thumbnail -->
+                        <div class="blog-post-thumbnail">
+                            <img src="img/blog-img/table1.png" alt="">
+
+                        </div>
+                    </div>
+
+                    <!-- Single Blog Area -->
+                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="600ms">
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a class="headline"><font face="標楷體" size="15px">路況分級表</font></a>
+                            <p>路況分級如下表，再根據下表的級別，並參照該路線的路跡/指標、地形、植被，量化成分數。</p>
+                        </div>
+
+                        <!-- Post Thumbnail -->
+                        <div class="blog-post-thumbnail">
+                            <img src="img/blog-img/table2.png" alt="">
+
+                        </div>
+                        
+                    </div>
+
+                    <!-- Single Blog Area -->
+                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="900ms">
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <a class="headline"><font face="標楷體" size="15px">體力分級表</font></a>
+                            <p>體力參照標準如下表，再根據下表的級別，量化成分數。</p>
+                        </div>
+
+                        <!-- Post Thumbnail -->
+                        <div class="blog-post-thumbnail">
+                            <img src="img/blog-img/table3.png" alt="">
+
+                        </div>
+                    </div>
+
+                    <!-- Single Blog Area -->
+                    <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="1100ms">
+                        <div class="post-content">
+                            <a class="headline"><font face="標楷體" size="15px">評分系統</font></a>
+                        </div>
+
+                        <div id = "judge" class = "content">
+
+                            
+                            <h2>
+                                路線名稱：<input id = "name" name = "name" type = "text" size="20" style="font-size:20px"  required>
+                            </h2>
+                            <h2> 
+                                傳統路：<input id ="normal" name="day" type="number" size="1" value="0" min="0"  style="font-size:20px; width: 50px;" required>天
+                                + 非傳統路：<input id ="abnormal" name="day" type="number" size="0.5" value="0" min="0" style="font-size:20px" required> 天
+                                ，共<input id ="sum" name="day" type="number" size="1" value="0" min="0" style="font-size:20px" required>天
+                            </h2>
+                            <h2>
+                                路況分級：<select id = "level" name="level" class="select" style="font-size:20px" required><option value = "" selected = "">請選擇</option><option value="1">一</option><option value="11">二</option><option value="21">三a</option><option value="31">三b</option><option value="41">四a</option><option value="51">四b</option></select>
+                            </h2>
+                            <h2>
+                               路跡/指標：<select id = "road" name="road" class="select" style="font-size:20px;" required><option value = "" selected = "">請選擇</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+                               
+                               地形：<select id = "terrain" name="road" class="select" style="font-size:20px;" required><option value= "" selected = "">請選擇</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+                               
+                               植被：<select id = "plant" name="road" class="select" style="font-size:20px;" required><option value="" selected = "">請選擇</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+                               
+                
+                            </h2>
+                            
+                            <h2>
+                                體力：<select id = "energy" name="energy" class="select" style="font-size:20px;" required><option value="" selected = "">請選擇</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                                多背水天數：<input id ="water" name="day" type="number" size="1" value="0" min="0" style="font-size:20px" required>天
+                                
+                            </h2>
+                        
+                
+                            <h2 id="Show"></h2>
+                            <h2>
+                                <button id = "Show" onclick = "caculate()" style="margin-top: 10px;">開始計算</button>
+                            </h2>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- ***** Blog Area End ***** -->
+
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-area">
+        <!-- back end content -->
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copywrite Text -->
+                    <div class="copywrite-text">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+</body>
+
+</html>
