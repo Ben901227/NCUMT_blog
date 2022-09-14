@@ -24,7 +24,9 @@
   padding: 0; }
 
 body {
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif; 
+  overflow: hidden;
+}
 
 h1,
 h2,
@@ -1459,14 +1461,7 @@ img {
   .single-pie-bar {
     margin-bottom: 30px; } }
 
-.owl-carousel.owl-drag .owl-item {
--ms-touch-action: auto;
-touch-action: auto;
--webkit-user-select: all;
--moz-user-select: all;
--ms-user-select: all;
-user-select: all;
-}
+
 /* The end */
 
 /*# sourceMappingURL=style.css.map */
