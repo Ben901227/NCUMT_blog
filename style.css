@@ -254,7 +254,7 @@ img {
   line-height: 66px;
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms; }
-  #scrollUp:hover {
+#scrollUp:hover {
     background-color: #192a56; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     #scrollUp {
@@ -1459,6 +1459,14 @@ img {
   .single-pie-bar {
     margin-bottom: 30px; } }
 
+.owl-carousel.owl-drag .owl-item {
+-ms-touch-action: auto;
+touch-action: auto;
+-webkit-user-select: all;
+-moz-user-select: all;
+-ms-user-select: all;
+user-select: all;
+}
 /* The end */
 
 /*# sourceMappingURL=style.css.map */
