@@ -17,9 +17,24 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- music -->
+    <script type="text/javascript">
+        var music;
+        window.onload = function() {
+            music = document.getElementById("music");
+        };
+        function playMusic() {
+            music.play();
+        }
+        function pauseMusic() {
+            music.pause();
+        }
+    </script>
+
 </head>
 
 <body>
+    <audio loop id = "music" src="music/river.mp3" ></audio>
     <!-- Preloader Start -->
     <div id="preloader">
         <div class="preload-content">
@@ -67,12 +82,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="portfolio.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Portfolio</font></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="blog.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Blog</font></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Contact</font></a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>
@@ -101,6 +116,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
+                                <font color="white" face="Comic Sans Ms">BGM</font>
+                                <button id = "play" onclick="playMusic()"><img src = "img/core-img/play.jpg" width = "15" ></button>
+                                <button id = "pause" onclick="pauseMusic()"><img src = "img/core-img/pause.jpg" width = "15" ></button>
                                 <a href="https://linktr.ee/ncumt" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 <a href="https://www.instagram.com/ncumountaineeringclub/" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 <a href="https://www.facebook.com/ncumountaineeringclub" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -127,8 +145,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <div class="col-12 col-md-8">
                         <div class="line"></div>
                         <h2>隊伍回顧</h2>
-                        <p>去年是山社蓬勃發展的一年，隊伍數量遽增，下面是去年隊伍的紀錄。</p>
-                        <a href="https://www.facebook.com/ncumountaineeringclub" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">contact me</font></a>
+                        <p>去年是山社蓬勃發展的一年，隊伍數量遽增，看看我們去了哪些地方吧。</p>
+                        <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">JOIN US</font></a>
                     </div>
                 </div>
             </div>
@@ -275,7 +293,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
                 <!-- Single gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item 中級山 高山 長程 wow fadeInUpBig" data-wow-delay="300ms">
-                    <a class="gallery-img" href="img/portfolio-img/13.jpg"><img src="img/portfolio-img/13.JPG" alt=""></a>
+                    <a class="gallery-img" href="img/portfolio-img/13.jpg"><img src="img/portfolio-img/13.jpg" alt=""></a>
                     <!-- Gallery Content -->
                     <div class="gallery-content">
                         <h4>奇烈亭北一段<br><a>2022.06.25-30</a></h4>
@@ -315,7 +333,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
                 <!-- Single gallery Item -->
                 <div class="col-12 col-sm-6 col-lg-3 single_gallery_item 中級山 wow fadeInUpBig" data-wow-delay="300ms">
-                    <a class="gallery-img" href="img/portfolio-img/17.jpg"><img src="img/portfolio-img/17.JPG" alt=""></a>
+                    <a class="gallery-img" href="img/portfolio-img/17.jpg"><img src="img/portfolio-img/17.jpg" alt=""></a>
                     <!-- Gallery Content -->
                     <div class="gallery-content">
                         <h4>高嶺古道<br><a>2022.08.19-22</a></h4>
@@ -325,9 +343,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
             </div>
 
-            <div class="row">
-                <div class="col-12 text-center">
-                    <a href="#" class="btn sonar-btn">Load More</a>
+            <div class="sonar-call-to-action-area section-padding-0-100">
+                <div class="backEnd-content">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
+                                <h1><font face="標楷體" size = "50px">歡迎加入中央大學登山社</font></h1>
+                                <h5><font face = "標楷體" size = "3px">帶你去離天空更近的地方</font></h5>
+                                <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">JOIN US</font></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

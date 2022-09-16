@@ -17,15 +17,27 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- music -->
+    <script type="text/javascript">
+        var music;
+        window.onload = function() {
+            music = document.getElementById("music");
+        };
+        function playMusic() {
+            music.play();
+        }
+        function pauseMusic() {
+            music.pause();
+        }
+    </script>
+
 </head>
 
 <body>
     <!-- Preloader Start -->
-    <div id="preloader">
-        <div class="preload-content">
-            <div id="sonar-load"></div>
-        </div>
-    </div>
+    <audio loop id = "music" src="music/river.mp3" ></audio>
+
+
     <!-- Preloader End -->
 
     <!-- ***** Main Menu Area Start ***** -->
@@ -54,12 +66,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="portfolio.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Portfolio</font></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="blog.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Blog</font></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Contact</font></a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>
@@ -88,6 +100,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
+                                <font color="white" face="Comic Sans Ms">BGM</font>
+                                <button id = "play" onclick="playMusic()"><img src = "img/core-img/play.jpg" width = "15" ></button>
+                                <button id = "pause" onclick="pauseMusic()"><img src = "img/core-img/pause.jpg" width = "15" ></button>
                                 <a href="https://linktr.ee/ncumt" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 <a href="https://www.instagram.com/ncumountaineeringclub/" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 <a href="https://www.facebook.com/ncumountaineeringclub" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -105,12 +120,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ***** Hero Area Start ***** -->
     <div class="hero-area d-flex align-items-center">
         <!-- Back End Content -->
-        <div class="backEnd-content">
-            <img class="dots" src="img/core-img/dots.png" alt="">
-        </div>
+
 
         <!-- Hero Thumbnail -->
-        <div class="hero-thumbnail aboutUs equalize bg-img" style="background-image: url(img/bg-img/about.png);"></div>
+        <div class="hero-thumbnail equalize bg-img" style="background-image: url(img/bg-img/about.png);"></div>
         
         <!-- Hero Content -->
         <div class="hero-content aboutUs equalize">
@@ -121,7 +134,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <h2>中央大學登山社</h2>
                         <p>中大登山社於民國 64 年創立，今年共21位幹部，社員人數眾多，從平易近人的高山百岳和歷史古道、專精的技能訓練與實作到深度探勘原始山林皆有涉略，亦有從事攀岩、溯溪、單車等活動。
                             在山社裡將可以交到一群能患難與共、一同歡笑、一同去挑戰自我的朋友，因愛山而相遇、因愛山而成為了幹部，希望能夠把山的美好傳承下去。歡迎各位加入我們的登山行列，漫遊台灣山林，與我們在山林中飽覽大自然令人驚嘆的美、體驗冒險帶來的樂趣、挑戰從未探索的新事物。若想瞭解更多歡迎關注我們的FB粉絲團及Instagram！</p>
-                            <a href="https://www.facebook.com/ncumountaineeringclub" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">contact me</font></a>
+                            <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">Join us</font></a>
                     </div>
                 </div>
             </div>
@@ -129,100 +142,53 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
     <!-- ***** Hero Area End ***** -->
 
-    <div class="sonar-about-us-area bg-img" style="background-image: url(img/bg-img/p4.jpg);">
-        <!-- Back End Content -->
-        <div class="backEnd-content">
-            <h2></h2>
-        </div>
-
+    <div class="sonar-about-us-area bg-img" style="background-image: url(img/bg-img/slide8.jpg);">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-10 col-lg-7">
+                <div class="col-12 col-md-10 col-lg-6">
                     <div class="about-us-content bg-white">
                         <div class="section-heading text-left wow fadeInUp" data-wow-delay="300ms">
                             <div class="line"></div>
                             <h2><font face = "標楷體" size = "30px">多元的隊伍</font></h2>
+                            
                         </div>
                         <p class="wow fadeInUp" data-wow-delay="600ms">除了一些的熱門高山百岳路線，還有中級山探勘，深入罕為人至的秘境探險。另外也有溯溪隊伍，有較為入門的小品溪，還有與登山結合的溯登隊伍，有這麼豐富的活動，還不趕緊加入我們!!</p>
-                        <!-- Progress Bar Content Area -->
-                        <div class="services-progress-bar mt-50 wow fadeInUp" data-wow-delay="900ms">
-                            <!-- Single Progress Bar -->
-                            <!-- <div class="single_progress_bar">
-                                <div id="bar1" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="80"></span>
-                                </div>
-                                <p>Pacience</p>
-                            </div> -->
-                            <!-- Single Progress Bar -->
-                            <!-- <div class="single_progress_bar">
-                                <div id="bar2" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="90"></span>
-                                </div>
-                                <p>Creativity</p>
-                            </div> -->
-                            <!-- Single Progress Bar -->
-                            <!-- <div class="single_progress_bar">
-                                <div id="bar3" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="100"></span>
-                                </div>
-                                <p>Commited</p>
-                            </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="sonar-about-us-area second-part bg-img" style="background-image: url(img/bg-img/p4.jpg);">
-        <!-- Back End Content -->
-        <div class="backEnd-content">
-            <h2></h2>
+            
         </div>
 
-        <div class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-12 col-md-10 col-lg-7">
+        <div class="container-fluid">    
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-6">
                     <div class="about-us-content bg-white">
                         <div class="section-heading text-left wow fadeInUp" data-wow-delay="300ms">
                             <div class="line"></div>
                             <h2><font face = "標楷體" size = "30px">其他活動</font></h2>
                         </div>
                         <p class="wow fadeInUp" data-wow-delay="600ms">除了爬山外，我們也有精彩的社課、繩結器械的訓練、體力訓練，或是聖誕節還會有交換禮物等豐富的活動，就等著你來參加拉~</p>
-                        <!-- <div class="row mt-100 text-center wow fadeInUp" data-wow-delay="900ms">
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="single-pie-bar" data-percent="90">
-                                    <canvas class="bar-circle" width="100" height="100"></canvas>
-                                    <p>Landsacpes</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="single-pie-bar" data-percent="65">
-                                    <canvas class="bar-circle" width="100" height="100"></canvas>
-                                    <p>Portraits</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="single-pie-bar" data-percent="25">
-                                    <canvas class="bar-circle" width="100" height="100"></canvas>
-                                    <p>Studio</p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="sonar-call-to-action-area section-padding-0-100">
+        <div class="backEnd-content">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
+                        <h1><font face="標楷體" size = "50px">歡迎加入中央大學登山社</font></h1>
+                        <h5><font face = "標楷體" size = "3px">帶你去離天空更近的地方</font></h5>
+                        <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">JOIN US</font></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ***** Footer Area Start ***** -->
     <footer class="footer-area">

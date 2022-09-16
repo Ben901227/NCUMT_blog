@@ -39,11 +39,9 @@
 
     </style>
     <script type="text/javascript">
-        var music,play;
+        var music;
         window.onload = function() {
             music = document.getElementById("music");
-            play = document.getElementById("play");
-            // setInterval("function(){play().click();}",100);
         };
         function playMusic() {
             music.play();
@@ -178,7 +176,7 @@
 </head>
 
 <body>
-    <audio autoplay loop id = "music" src="music/river.mp3" ></audio>
+    <audio loop id = "music" src="music/river.mp3" ></audio>
     <!-- Preloader Start -->
     <div id="preloader">
         <div class="preload-content">
@@ -226,12 +224,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="portfolio.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Portfolio</font></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="blog.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Blog</font></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Contact</font></a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>
@@ -261,8 +259,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
                                 <font color="white" face="Comic Sans Ms">BGM</font>
-                                <button id = "play" onclick="playMusic()">播放</button>
-                                <button id = "pause" onclick="pauseMusic()">暫停</button>
+                                <button id = "play" onclick="playMusic()"><img src = "img/core-img/play.jpg" width = "15" ></button>
+                                <button id = "pause" onclick="pauseMusic()"><img src = "img/core-img/pause.jpg" width = "15" ></button>
                                 <a href="https://linktr.ee/ncumt" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 <a href="https://www.instagram.com/ncumountaineeringclub/" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 <a href="https://www.facebook.com/ncumountaineeringclub" target = "_blank" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -281,7 +279,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <div class="hero-area d-flex align-items-center">
        
         <!-- Hero Thumbnail -->
-        <div class="hero-thumbnail equalize bg-img" style="background-image: url(img/bg-img/blog.jpg);"></div>
+        <div class="hero-thumbnail equalize bg-img" style="background-image: url(img/bg-img/slide4.jpg);"></div>
         
         <!-- Hero Content -->
         <div class="hero-content equalize">
@@ -292,7 +290,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="line"></div>
                         <h2>隊伍難度評分系統</h2>
                         <p>此評分系統根據路況、天數及所需體力來量化，並依據分數高低來訂定隊伍難度等級，請參考下列表格。</p>
-                        <a href="#judge" class="btn sonar-btn white-btn"><font size=" 5px">開始評分</font></a>
+                        <a href="#judgement" class="btn sonar-btn white-btn"><font size=" 5px">開始評分</font></a>
                     </div>
                 </div>
             </div>
@@ -357,7 +355,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
 
                     <!-- Single Blog Area -->
-                    <div class="single-blog-area mb-100 wow fadeInUp">
+                    <div id = "judgement" class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="1100ms">
                         <div class="post-content">
                             <a class="headline"><font face="標楷體" size="15px">評分系統</font></a>
                         </div>
@@ -410,6 +408,22 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
         </div>
     </section>
+    
+    <div class="sonar-call-to-action-area section-padding-0-100">
+        <div class="backEnd-content">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
+                        <h1><font face="標楷體" size = "50px">歡迎加入中央大學登山社</font></h1>
+                        <h5><font face = "標楷體" size = "3px">帶你去離天空更近的地方</font></h5>
+                        <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">JOIN US</font></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ***** Blog Area End ***** -->
 
     <!-- ***** Footer Area Start ***** -->

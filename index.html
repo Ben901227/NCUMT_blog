@@ -17,6 +17,20 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- music -->
+    <script type="text/javascript">
+        var music;
+        window.onload = function() {
+            music = document.getElementById("music");
+        };
+        function playMusic() {
+            music.play();
+        }
+        function pauseMusic() {
+            music.pause();
+        }
+    </script>
+
 </head>
 
 <body>
@@ -67,12 +81,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="portfolio.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Portfolio</font></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="blog.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Blog</font></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html"><font face = "Comic Sans Ms" size = "4px" color = "white">Contact</font></a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </nav>
@@ -161,7 +175,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <div class="hero-slides-content">
                                 <div class="line"></div>
                                 <h2>溯溪</h2>
-                                <p>垂降汶水溪5米瀑布</p>
+                                <p>在學會探勘前，我們的眼中只有山徑，
+                                    在學會溯溪前，我們只知道要避開溪谷，
+                                    當一切都明朗後，整個山的面貌才會浮現
+                                    ，你可以選擇走、可以爬、可以游、可以垂
+                                    你可以到台灣的任何地方。</p>
                             </div>
                         </div>
                     </div>
@@ -170,6 +188,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </section>
     <!-- ***** Hero Area End ***** -->
+
+    <audio loop id = "music" src="music/river.mp3" ></audio>
 
     <!-- ***** Portfolio Area Start ***** -->
     <div class="portfolio-area section-padding-100">
@@ -310,7 +330,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <div class="call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
                         <h1><font face="標楷體" size = "50px">歡迎加入中央大學登山社</font></h1>
                         <h5><font face = "標楷體" size = "3px">帶你去離天空更近的地方</font></h5>
-                        <a href="https://www.facebook.com/ncumountaineeringclub" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">contact me</font></a>
+                        <a href="https://forms.gle/hFieNdXMCuX6BRuE9" target="_blank" class="btn sonar-btn mt-100"><font face = "Comic Sans Ms" size = "3px">JOIN US</font></a>
                     </div>
                 </div>
             </div>
